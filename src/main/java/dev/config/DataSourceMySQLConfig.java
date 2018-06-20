@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 public class DataSourceMySQLConfig {
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost/gestion_des_transports");

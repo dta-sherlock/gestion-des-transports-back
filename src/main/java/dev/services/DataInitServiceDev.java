@@ -1,6 +1,8 @@
 package dev.services;
 
 import dev.entity.User;
+import dev.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,11 @@ import javax.transaction.Transactional;
 @Service
 public class DataInitServiceDev implements DataInitService{
 
-    @PersistenceContext
-    private EntityManager em;
+    @Autowired
+    UserRepository userRepository;
 
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
@@ -23,16 +26,16 @@ public class DataInitServiceDev implements DataInitService{
         User collab = new User("collab@test",
                 passwordEncoder.encode("collab"),
                 User.ROLES.COLLAB);
-        em.persist(collab);
+        userRepository.save(collab);
 
         User driver = new User("driver@test",
                 passwordEncoder.encode("driver"),
                 User.ROLES.DRIVER);
-        em.persist(driver);
+        userRepository.save(driver);
 
         User admin = new User("admin@test",
                 passwordEncoder.encode("admin"),
                 User.ROLES.ADMIN);
-        em.persist(admin);
+        userRepository.save(admin);
     }
 }
