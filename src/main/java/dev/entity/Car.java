@@ -12,7 +12,7 @@ public class Car {
     int id;
     String immatriculation;
     String photo;
-    int nombreDePlaces;
+    int placeAvailable;
     String brand;
     String model;
     CarCategory category;
@@ -20,10 +20,10 @@ public class Car {
     public Car() {
     }
 
-    public Car(String immatriculation, String photo, int nombreDePlaces, String brand, String model, CarCategory category) {
+    public Car(String immatriculation, String photo, int placeAvailable, String brand, String model, CarCategory category) {
         this.immatriculation = immatriculation;
         this.photo = photo;
-        this.nombreDePlaces = nombreDePlaces;
+        this.placeAvailable = placeAvailable;
         this.brand = brand;
         this.model = model;
         this.category = category;
@@ -53,12 +53,12 @@ public class Car {
         this.photo = photo;
     }
 
-    public int getNombreDePlaces() {
-        return nombreDePlaces;
+    public int getPlaceAvailable() {
+        return placeAvailable;
     }
 
-    public void setNombreDePlaces(int nombreDePlaces) {
-        this.nombreDePlaces = nombreDePlaces;
+    public void setPlaceAvailable(int placeAvailable) {
+        this.placeAvailable = placeAvailable;
     }
 
     public String getBrand() {

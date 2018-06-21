@@ -14,8 +14,8 @@ import dev.entity.Car;
 import dev.repository.CarsRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("./admin/vehicules")
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("admin/vehicules")
 public class CarsControler {
 
 	@Autowired
@@ -26,30 +26,10 @@ public class CarsControler {
 		return carsControler.findAll();
 	}
 
-	// @RequestMapping(method = RequestMethod.GET)
-	// public String getListCarsWithFilter(Model model, @RequestParam("immat")
-	// String immat, @RequestParam("brand") String brand) {
-	// List<Car> cars = new ArrayList<Car>();
-	//
-	// if (!brand.equals("") && immat.equals("")) {
-	// model.addAttribute("CarsList",
-	// carsControler.findAllByBrandIsStartingWith(brand));
-	// } else if (brand.equals("") && !immat.equals("")) {
-	// model.addAttribute("CarsList",
-	// carsControler.findAllByImmatriculationStartingWith(immat));
-	// } else {
-	// model.addAttribute("CarsList",
-	// carsControler.findAllByBrandIsStartingWithAndImmatriculationStartingWith(brand,
-	// immat));
-	// }
-	// model.addAttribute("category", Car.CarCategory.values());
-	//
-	// return "./admin/vehicules";
-	// }
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String submitFormCar(@ModelAttribute("formCar") Car car) {
+	public String submitFormCar(@ModelAttribute("creationForm") Car car) {
 		carsControler.save(car);
-		return "redirect:./admin/vehicules";
+		return "redirect:admin/vehicules";
 	}
 }
