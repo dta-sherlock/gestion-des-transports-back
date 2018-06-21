@@ -2,6 +2,7 @@ package dev.controller;
 
 import java.util.List;
 
+import dev.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.entity.Car;
-import dev.repository.CarsRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -19,7 +19,7 @@ import dev.repository.CarsRepository;
 public class CarsControler {
 
 	@Autowired
-	CarsRepository carsControler;
+	CarRepository carsControler;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Car> getListCars(Model model) {

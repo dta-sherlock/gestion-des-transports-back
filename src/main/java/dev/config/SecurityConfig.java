@@ -19,7 +19,6 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Import(DataSourceMySQLConfig.class)
-@CrossOrigin
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

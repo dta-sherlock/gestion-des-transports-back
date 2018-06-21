@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@ComponentScan(basePackages = "dev.config")
+@ComponentScan(basePackages ={"dev.config"})
 @Profile({"dev-mysql"})
 public class CarRepositoryTest {
 
