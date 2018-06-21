@@ -8,7 +8,8 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@RequestMapping("/rest")
+@CrossOrigin(origins = "localhost:4200/")
 public class UserController {
 
     @Autowired
@@ -20,6 +21,17 @@ public class UserController {
         User user = userRepository.findByEmail(userEmail);
         if (user != null) {
             return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @RequestMapping(value = "/getUserRole/{userEmail}", method = RequestMethod.GET)
+    @Secured({})
+    public ResponseEntity<User.ROLES> getUserRole(@PathVariable String userEmail){
+        User user = userRepository.findByEmail(userEmail);
+        if (user != null) {
+            return ResponseEntity.ok(user.getRoles());
         } else {
             return ResponseEntity.notFound().build();
         }
