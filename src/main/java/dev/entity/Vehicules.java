@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Car {
+public class Vehicules {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String immatriculation;
@@ -17,10 +17,10 @@ public class Car {
     String model;
     CarCategory category;
 
-    public Car() {
+    public Vehicules() {
     }
 
-    public Car(String immatriculation, String photo, int placeAvailable, String brand, String model, CarCategory category) {
+    public Vehicules(String immatriculation, String photo, int placeAvailable, String brand, String model, CarCategory category) {
         this.immatriculation = immatriculation;
         this.photo = photo;
         this.placeAvailable = placeAvailable;
