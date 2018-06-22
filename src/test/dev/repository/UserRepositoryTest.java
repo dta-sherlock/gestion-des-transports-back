@@ -36,9 +36,6 @@ public class UserRepositoryTest {
 
     @Test
     public void testUser(){
-        System.out.println(userRepository);
-        System.out.println(passwordEncoder);
-
         User collab = new User("collab@test",
                 "collab",
                 User.ROLES.COLLAB);

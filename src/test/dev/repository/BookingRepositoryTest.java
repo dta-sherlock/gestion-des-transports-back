@@ -1,6 +1,5 @@
 package dev.repository;
 
-import dev.services.DataInitService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,6 @@ public class BookingRepositoryTest {
 
     @Test
     public void testBooking() {
-        
+
     }
 }
