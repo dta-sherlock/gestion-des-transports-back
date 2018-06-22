@@ -2,6 +2,7 @@ package dev.repository;
 
 import dev.entity.Booking;
 import dev.services.DataInitServiceDev;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,6 @@ public class BookingRepositoryTest {
 
         bookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
 
-        assertTrue(bookingRepo.findAll().contains(booking));
-        assertThat
+        Assertions.assertThat(bookingRepo.findAll().contains(booking));
     }
 }
