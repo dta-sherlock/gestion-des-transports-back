@@ -36,6 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("select email, ROLES from user where email = ?");
     }
 
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/**").permitAll().and().csrf().disable();
+    }
     /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {

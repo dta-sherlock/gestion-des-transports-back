@@ -1,10 +1,7 @@
 package dev.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Vehicules {
@@ -15,7 +12,8 @@ public class Vehicules {
     int placeAvailable;
     String brand;
     String model;
-    CarCategory category;
+
+    @Enumerated(EnumType.STRING) CarCategory category;
 
     public Vehicules() {
     }

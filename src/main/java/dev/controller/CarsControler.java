@@ -11,7 +11,7 @@ import dev.entity.Vehicules;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/admin/vehicules")
+@RequestMapping("/admin/vehicules/")
 public class CarsControler {
 
 	@Autowired
@@ -23,7 +23,7 @@ public class CarsControler {
 	}
 
 
-	@RequestMapping(method = RequestMethod.POST,path = "/creer")
+	@RequestMapping(method = RequestMethod.POST,path = "creer/")
 	public String submitFormCar(@RequestBody Vehicules car) {
 		carsControler.save(car);
 		return "redirect:/admin/vehicules";
