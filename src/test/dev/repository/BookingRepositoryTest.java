@@ -11,8 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertTrue;
-
 import java.time.LocalDateTime;
 
 @RunWith(SpringRunner.class)
@@ -21,22 +19,22 @@ import java.time.LocalDateTime;
 @Profile("dev-mysql")
 public class BookingRepositoryTest {
 
-    @Autowired
-    private BookingRepository bookingRepo;
+	@Autowired
+	private BookingRepository bookingRepo;
 
-    @Autowired
-    private DataInitServiceDev dataInitServiceDev;
+	@Autowired
+	private DataInitServiceDev dataInitServiceDev;
 
-    @Test
-    public void testBooking() {
+	@Test
+	public void testBooking() {
 
-        Booking booking = new Booking(LocalDateTime.now(), LocalDateTime.now().plusDays(1));
+		Booking booking = new Booking(LocalDateTime.now(), LocalDateTime.now().plusDays(1));
 
-        dataInitServiceDev.init();
-        bookingRepo.save(booking);
+		dataInitServiceDev.init();
+		bookingRepo.save(booking);
 
-        bookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
+		bookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
 
-        Assertions.assertThat(bookingRepo.findAll().contains(booking));
-    }
+		Assertions.assertThat(bookingRepo.findAll().contains(booking));
+	}
 }
