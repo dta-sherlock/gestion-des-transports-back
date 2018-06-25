@@ -12,8 +12,4 @@ import dev.entity.CompanyCarBooking;
 @CrossOrigin
 public class BookingController {
 	
-	@Autowired
-	private CompanyCarBooking companyCarBookingRepo;
-	
-	
 }

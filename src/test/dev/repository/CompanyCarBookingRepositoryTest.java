@@ -28,20 +28,23 @@ public class CompanyCarBookingRepositoryTest {
 	private CompanyCarBookingRepository companyCarBookingRepo;
 
 	@Autowired
+	private UserRepository userRepo;
+
+	@Autowired
 	private DataInitServiceDev dataInitServiceDev;
 
 	@Test
 	public void testCompanyCarBooking() {
-		
+
 		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
 		Car car = new Car("AA-123-BB", "photo_test", 4, "Peugeot", "123", CarCategory.BerlinesTailleL);
 		CompanyCarBooking companyCarBooking = new CompanyCarBooking(user, LocalDateTime.now(),
 				LocalDateTime.now().plusDays(1), car);
 
 		dataInitServiceDev.init();
-		companyCarBookingRepo.save(companyCarBooking);
 
-		companyCarBookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
+		userRepo.save(user);
+		companyCarBookingRepo.save(companyCarBooking);
 
 		Assertions.assertThat(companyCarBookingRepo.findAll().contains(companyCarBooking));
 	}
