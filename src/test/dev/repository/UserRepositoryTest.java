@@ -1,27 +1,18 @@
 package dev.repository;
 
-import dev.config.DataSourceMySQLConfig;
-import dev.config.ServicesConfig;
 import dev.entity.User;
-import dev.repository.UserRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Repository;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 @ComponentScan(basePackages = "dev.config")
 @Profile("dev-mysql")
 public class UserRepositoryTest {
@@ -34,10 +25,7 @@ public class UserRepositoryTest {
 
 
     @Test
-    public void testUser(){
-        System.out.println(userRepository);
-        System.out.println(passwordEncoder);
-
+    public void testUser() {
         User collab = new User("collab@test",
                 "collab",
                 User.ROLES.COLLAB);
@@ -53,12 +41,8 @@ public class UserRepositoryTest {
                 User.ROLES.ADMIN);
         userRepository.save(admin);
 
-        userRepository.save(collab);
-        userRepository.save(driver);
-        userRepository.save(admin);
-
-        assertTrue(userRepository.findAll().contains(collab));
-        assertTrue(userRepository.findAll().contains(driver));
-        assertTrue(userRepository.findAll().contains(admin));
+        Assertions.assertThat(userRepository.findAll().contains(collab));
+        Assertions.assertThat(userRepository.findAll().contains(driver));
+        Assertions.assertThat(userRepository.findAll().contains(admin));
     }
 }
