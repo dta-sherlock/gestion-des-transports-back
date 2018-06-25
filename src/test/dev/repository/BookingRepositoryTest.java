@@ -25,19 +25,21 @@ public class BookingRepositoryTest {
 	private BookingRepository bookingRepo;
 
 	@Autowired
+	private UserRepository userRepo;
+
+	@Autowired
 	private DataInitServiceDev dataInitServiceDev;
 
 	@Test
 	public void testBooking() {
-		
+
 		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
 		Booking booking = new Booking(user, LocalDateTime.now(), LocalDateTime.now().plusDays(1));
 
 		dataInitServiceDev.init();
-		
-		bookingRepo.save(booking);
 
-		bookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
+		userRepo.save(user);
+		bookingRepo.save(booking);
 
 		Assertions.assertThat(bookingRepo.findAll().contains(booking));
 	}
