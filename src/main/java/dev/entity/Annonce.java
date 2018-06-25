@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +41,10 @@ public class Annonce {
 
 	@Column(name = "TRAVEL_DATE", nullable = false)
 	private LocalDateTime travelDate;
+
+	@ManyToOne
+	@JoinColumn(name = "USER_ID", nullable = false)
+	private User author;
 
 	public Integer getId() {
 		return id;
@@ -102,6 +108,14 @@ public class Annonce {
 
 	public void setTravelDate(LocalDateTime travelDate) {
 		this.travelDate = travelDate;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 }
