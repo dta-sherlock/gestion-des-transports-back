@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,6 +19,8 @@ public class Booking {
     private Integer id;
 	private LocalDateTime bookedAt;
 	private LocalDateTime returnsAt;
+	@OneToOne
+	private User user;
 	
 	public Booking(){
 		
@@ -45,5 +48,13 @@ public class Booking {
 	}
 	public void setReturnsAt(LocalDateTime returnsAt) {
 		this.returnsAt = returnsAt;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
