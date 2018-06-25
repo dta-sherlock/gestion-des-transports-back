@@ -13,7 +13,7 @@ public class CompanyCarBookingDriver extends CompanyCarBooking{
 		super();
 	}
 	
-	public CompanyCarBookingDriver(LocalDateTime bookedAt, LocalDateTime returnsAt, Car car){
-		super(bookedAt, returnsAt, car);
+	public CompanyCarBookingDriver(User user, LocalDateTime bookedAt, LocalDateTime returnsAt, Car car){
+		super(user, bookedAt, returnsAt, car);
 	}
 }

@@ -15,8 +15,8 @@ public class CompanyCarBooking extends Booking {
 		super();
 	}
 
-	public CompanyCarBooking(LocalDateTime bookedAt, LocalDateTime returnsAt, Car car) {
-		super(bookedAt, returnsAt);
+	public CompanyCarBooking(User user, LocalDateTime bookedAt, LocalDateTime returnsAt, Car car) {
+		super(user, bookedAt, returnsAt);
 		this.setCar(car);
 	}
 

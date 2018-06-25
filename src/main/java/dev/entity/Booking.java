@@ -26,9 +26,10 @@ public class Booking {
 		
 	}
 	
-	public Booking(LocalDateTime bookedAt, LocalDateTime returnsAt){
+	public Booking(User user, LocalDateTime bookedAt, LocalDateTime returnsAt){
 		this.bookedAt = bookedAt;
 		this.returnsAt = returnsAt;
+		this.user = user;
 	}
 	
 	public Integer getId() {

@@ -1,6 +1,8 @@
 package dev.repository;
 
 import dev.entity.Booking;
+import dev.entity.User;
+import dev.entity.User.ROLES;
 import dev.services.DataInitServiceDev;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -27,10 +29,12 @@ public class BookingRepositoryTest {
 
 	@Test
 	public void testBooking() {
-
-		Booking booking = new Booking(LocalDateTime.now(), LocalDateTime.now().plusDays(1));
+		
+		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
+		Booking booking = new Booking(user, LocalDateTime.now(), LocalDateTime.now().plusDays(1));
 
 		dataInitServiceDev.init();
+		
 		bookingRepo.save(booking);
 
 		bookingRepo.findAll().forEach(booking1 -> System.out.println(booking1.getId()));
