@@ -14,8 +14,7 @@ public class StartUpAppListener {
 
     @EventListener(ContextRefreshedEvent.class)
     public void contextRefreshedEvent() {
-        // capture du démarrage de l'application
-        // à un moment où le contexte Spring est complètement créé
+        // initialize DB at the application start up
         initService.init();
     }
 }

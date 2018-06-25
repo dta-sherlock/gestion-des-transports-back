@@ -14,6 +14,7 @@ public class User {
     private Integer id;
     private String email;
     private String password;
+    @Enumerated(EnumType.STRING)
     private ROLES roles;
     private boolean IS_ACTIVE;
 
