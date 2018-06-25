@@ -29,6 +29,9 @@ public class CompanyCarBookingRepositoryTest {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private CarRepository carRepo;
 
 	@Autowired
 	private DataInitServiceDev dataInitServiceDev;
@@ -42,7 +45,8 @@ public class CompanyCarBookingRepositoryTest {
 				LocalDateTime.now().plusDays(1), car);
 
 		dataInitServiceDev.init();
-
+		
+		carRepo.save(car);
 		userRepo.save(user);
 		companyCarBookingRepo.save(companyCarBooking);
 

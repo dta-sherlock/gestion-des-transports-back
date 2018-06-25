@@ -16,6 +16,8 @@ public class User {
     private String password;
     private ROLES roles;
     private boolean IS_ACTIVE;
+    @OneToOne
+    private Booking booking;
 
     public User() {}
 
@@ -53,4 +55,12 @@ public class User {
     public ROLES getRoles() { return roles; }
 
     public void setRoles(ROLES roles) { this.roles = roles; }
+
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
 }
