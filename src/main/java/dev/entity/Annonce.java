@@ -43,8 +43,20 @@ public class Annonce {
 	private LocalDateTime travelDate;
 
 	@ManyToOne
-	@JoinColumn(name = "USER_ID", nullable = false)
 	private User author;
+
+
+	public Annonce() {
+	}
+
+	public Annonce(String startingAddress, String arrivalAddress, Duration travelTime, Double distance, Integer placesAvailable, LocalDateTime travelDate) {
+		this.startingAddress = startingAddress;
+		this.arrivalAddress = arrivalAddress;
+		this.travelTime = travelTime;
+		this.distance = distance;
+		this.placesAvailable = placesAvailable;
+		this.travelDate = travelDate;
+	}
 
 	public Integer getId() {
 		return id;

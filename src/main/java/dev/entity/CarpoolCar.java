@@ -12,8 +12,7 @@ public class CarpoolCar {
 	private String brand;
 	@Column
 	private String model;
-	@Column
-	private Integer placeAvailable;
+
 
 	public CarpoolCar() {
 	}
@@ -42,12 +41,5 @@ public class CarpoolCar {
 		this.model = model;
 	}
 
-	public Integer getPlaceAvailable() {
-		return placeAvailable;
-	}
-
-	public void setPlaceAvailable(Integer placeAvailable) {
-		this.placeAvailable = placeAvailable;
-	}
 
 }

@@ -14,8 +14,8 @@ import dev.entity.Annonce;
 import dev.repository.AnnonceRepository;
 
 @RestController
-@CrossOrigin
-@RequestMapping("annonces/")
+@CrossOrigin(origins = "*")
+@RequestMapping("collaborateur/annonces/")
 public class AnnonceController {
 
 	@Autowired
@@ -24,7 +24,6 @@ public class AnnonceController {
 	@GetMapping
 	public List<Annonce> findAllAnnonce() {
 		return this.annonceRepo.findAll();
-
 	}
 
 	@PostMapping(path = "/creer")
