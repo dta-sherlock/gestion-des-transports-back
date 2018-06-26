@@ -8,7 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -19,7 +20,8 @@ public class Booking {
     private Integer id;
 	private LocalDateTime bookedAt;
 	private LocalDateTime returnsAt;
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	public Booking(){

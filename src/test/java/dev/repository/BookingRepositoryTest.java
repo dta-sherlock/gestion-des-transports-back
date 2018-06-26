@@ -34,7 +34,8 @@ public class BookingRepositoryTest {
 	public void testBooking() {
 
 		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
-		Booking booking = new Booking(user, LocalDateTime.now(), LocalDateTime.now().plusDays(1));
+		Booking booking = new Booking(user, LocalDateTime.now(),
+				LocalDateTime.now().plusDays(1));
 
 		dataInitServiceDev.init();
 
