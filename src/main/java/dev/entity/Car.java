@@ -1,98 +1,69 @@
 package dev.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 
 @Entity
 public class Car {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+    String immatriculation;
+    int availableSeats;
+    String brand;
+    String model;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	String immatriculation;
-	String photo;
-	int nombreDePlaces;
-	String brand;
-	String model;
-	CarCategory category;
 
-	@OneToOne
-	private CompanyCarBooking companyCarBooking;
+    public Car() {
+    }
 
-	public Car() {
+    public Car(String immatriculation, int availableSeats, String brand, String model) {
+        this.immatriculation = immatriculation;
+        this.availableSeats = availableSeats;
+        this.brand = brand;
+        this.model = model;
+    }
 
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Car(String immatriculation, String photo, int nombreDePlaces, String brand, String model,
-			CarCategory category) {
-		this.immatriculation = immatriculation;
-		this.photo = photo;
-		this.nombreDePlaces = nombreDePlaces;
-		this.brand = brand;
-		this.model = model;
-		this.category = category;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public String getImmatriculation() {
+        return immatriculation;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
 
-	public String getImmatriculation() {
-		return immatriculation;
-	}
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
 
-	public void setImmatriculation(String immatriculation) {
-		this.immatriculation = immatriculation;
-	}
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
 
-	public String getPhoto() {
-		return photo;
-	}
+    public String getBrand() {
+        return brand;
+    }
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-	public int getNombreDePlaces() {
-		return nombreDePlaces;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public void setNombreDePlaces(int nombreDePlaces) {
-		this.nombreDePlaces = nombreDePlaces;
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public String getBrand() {
-		return brand;
-	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
 
-	public String getModel() {
-		return model;
-	}
 
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public CarCategory getCategory() {
-		return category;
-	}
-
-	public void setCategory(CarCategory category) {
-		this.category = category;
-	}
-
-	public enum CarCategory {
-		MicroUrbaines, MiniCitadines, CitadinesPolyvalentes, Compactes, BerlinesTailleS, BerlinesTailleM, BerlinesTailleL, SUV, ToutTerrains, PickUp
-	}
 }
