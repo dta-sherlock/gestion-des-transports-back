@@ -17,10 +17,9 @@ public class Car {
     @OneToMany
     private List<Booking> booking;
 
+    public Car (){
 
-    public Car() {
     }
-
     public Car(String immatriculation, int availableSeats, String brand, String model) {
         this.immatriculation = immatriculation;
         this.availableSeats = availableSeats;

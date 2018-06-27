@@ -1,19 +1,22 @@
 package dev.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-public class CarpoolBooking {
+public class CarpoolBooking extends Booking{
     private String startingAddress;
     private String arrivalAddress;
     private int availableSeats;
     private Car car;
+    private List<User> passengers;
 
-    public CarpoolBooking() {
 
-    }
-
-    public CarpoolBooking(String startingAddress, String arrivalAddress, int availableSeats, Car car) {
+    public CarpoolBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, String startingAddress, String arrivalAddress, int availableSeats, Car car) {
+        super(creator, startDate, endDate);
         this.startingAddress = startingAddress;
         this.arrivalAddress = arrivalAddress;
         this.availableSeats = availableSeats;
@@ -50,5 +53,13 @@ public class CarpoolBooking {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public List<User> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<User> passengers) {
+        this.passengers = passengers;
     }
 }

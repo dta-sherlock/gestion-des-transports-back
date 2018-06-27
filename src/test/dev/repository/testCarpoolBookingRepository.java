@@ -1,6 +1,8 @@
 package dev.repository;
 
-import dev.entity.Booking;
+import dev.entity.Car;
+import dev.entity.CarpoolBooking;
+import dev.entity.User;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 
@@ -18,16 +19,18 @@ import java.time.LocalDateTime;
 @SpringBootTest
 @ComponentScan(basePackages = "dev.config")
 @Profile("dev-mysql")
-public class testAnnonceRepository {
+public class testCarpoolBookingRepository {
 
 	@Autowired
-	CarpoolBookingRepository annonceRepo;
+	CarpoolBookingRepository cpbRepo;
 
 	@Test
-	public void testAnnonce (){
-		Booking a1 = new Booking("7 Rue de la Louche", "8 Rue des Olivettes", Duration.ZERO,150.7, 5, LocalDateTime.now());
-		this.annonceRepo.save(a1);
-		Assertions.assertThat(annonceRepo.findAll().contains(a1));
+	public void testCbRepo (){
+		Car car1 = new Car("XX-123-GO", 4, "Peugeot", "5008");
+		User creator = new User();
+		CarpoolBooking cb = new CarpoolBooking(creator, LocalDateTime.now(), LocalDateTime.now(),"7 Rue des Champs", "8 Rue des Hirondelles", 8, car1);
+		this.cpbRepo.save(cb);
+		Assertions.assertThat(cpbRepo.findAll().contains(cb));
 	}
 }
 
