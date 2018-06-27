@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,15 +19,15 @@ import dev.repository.UserRepository;
 @RestController
 @RequestMapping("/collaborateur/reservations")
 @CrossOrigin
-public class BookingController {
+public class CompanyCarBookingController {
 
 	@Autowired
 	CompanyCarBookingRepository companyCarBookingRepo;
-	
+
 	@Autowired
 	UserRepository userRepo;
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/companyCarBooking", method = RequestMethod.GET)
 	@Secured({})
 	public List<CompanyCarBooking> listCompanyCarBookings() {
 		return companyCarBookingRepo.findAll();
