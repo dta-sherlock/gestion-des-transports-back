@@ -1,6 +1,6 @@
 package dev.repository;
 
-import dev.entity.Annonce;
+import dev.entity.Booking;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,11 +21,11 @@ import java.time.LocalDateTime;
 public class testAnnonceRepository {
 
 	@Autowired
-	AnnonceRepository annonceRepo;
+	CarpoolBookingRepository annonceRepo;
 
 	@Test
 	public void testAnnonce (){
-		Annonce a1 = new Annonce("7 Rue de la Louche", "8 Rue des Olivettes", Duration.ZERO,150.7, 5, LocalDateTime.now());
+		Booking a1 = new Booking("7 Rue de la Louche", "8 Rue des Olivettes", Duration.ZERO,150.7, 5, LocalDateTime.now());
 		this.annonceRepo.save(a1);
 		Assertions.assertThat(annonceRepo.findAll().contains(a1));
 	}

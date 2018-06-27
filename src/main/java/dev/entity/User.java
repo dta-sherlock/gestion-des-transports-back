@@ -1,9 +1,8 @@
 package dev.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -14,14 +13,16 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private Integer id;
 	private String email;
 	private String password;
 	private ROLES roles;
 	private boolean IS_ACTIVE;
+	@OneToMany
+	private List<Booking> booking;
 
-	public User() {
-	}
+	public User() {}
 
 	public User(String email, String password, ROLES roles) {
 		this.email = email;
@@ -54,11 +55,15 @@ public class User {
 		this.password = password;
 	}
 
-	public ROLES getRoles() {
-		return roles;
+	public ROLES getRoles() { return roles; }
+
+	public void setRoles(ROLES roles) { this.roles = roles; }
+
+	public List<Booking> getBooking() {
+		return booking;
 	}
 
-	public void setRoles(ROLES roles) {
-		this.roles = roles;
+	public void setBooking(List<Booking> booking) {
+		this.booking = booking;
 	}
 }
