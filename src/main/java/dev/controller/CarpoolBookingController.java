@@ -28,7 +28,7 @@ public class CarpoolBookingController {
     @RequestMapping(value = "/user/{userEmail}", method = RequestMethod.GET)
     // TODO @Secured({})
     public List<CarpoolBooking> getBookingsByUserEmail(@PathVariable String userEmail) {
-        return carpoolBookingRepository.findByUser(userRepository.findByEmail(userEmail));
+        return carpoolBookingRepository.findByCreator(userRepository.findByEmail(userEmail));
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
