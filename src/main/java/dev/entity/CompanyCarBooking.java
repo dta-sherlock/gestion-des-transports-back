@@ -3,12 +3,17 @@ package dev.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class CompanyCarBooking extends Booking {
 	
 	private boolean withDriver;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User driver;
 
 	@OneToOne

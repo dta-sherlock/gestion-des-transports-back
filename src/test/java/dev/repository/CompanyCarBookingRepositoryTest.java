@@ -11,10 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.entity.Car;
 import dev.entity.CompanyCarBooking;
 import dev.entity.User;
-import dev.entity.Car.CarCategory;
+import dev.entity.CompanyCar;
 import dev.entity.User.ROLES;
 import dev.services.DataInitServiceDev;
 
@@ -29,9 +28,9 @@ public class CompanyCarBookingRepositoryTest {
 
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
-	private CarRepository carRepo;
+	private CompanyCarRepository companyCarRepo;
 
 	@Autowired
 	private DataInitServiceDev dataInitServiceDev;
@@ -40,13 +39,14 @@ public class CompanyCarBookingRepositoryTest {
 	public void testCompanyCarBooking() {
 
 		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
-		Car car = new Car("AA-123-BB", "photo_test", 4, "Peugeot", "123", CarCategory.BerlinesTailleL);
+		CompanyCar companyCar = new CompanyCar("AA-123-BB", 4, "marque", "modèle", "photo",
+				CompanyCar.CarCategory.BerlinesTailleL);
 		CompanyCarBooking companyCarBooking = new CompanyCarBooking(user, LocalDateTime.now(),
-				LocalDateTime.now().plusDays(1), car);
+				LocalDateTime.now().plusDays(1), companyCar);
 
 		dataInitServiceDev.init();
-		
-		carRepo.save(car);
+
+		companyCarRepo.save(companyCar);
 		userRepo.save(user);
 		companyCarBookingRepo.save(companyCarBooking);
 

@@ -1,16 +1,21 @@
 package dev.entity;
 
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 public class Car {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="car_id")
     int id;
     String immatriculation;
     int availableSeats;
     String brand;
     String model;
+    @OneToMany
+    private List<Booking> booking;
 
 
     public Car() {

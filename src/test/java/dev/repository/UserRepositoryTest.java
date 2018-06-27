@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertTrue;
+import org.assertj.core.api.Assertions;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,8 +46,8 @@ public class UserRepositoryTest {
         userRepository.save(driver);
         userRepository.save(admin);
 
-        assertTrue(userRepository.findAll().contains(collab));
-        assertTrue(userRepository.findAll().contains(driver));
-        assertTrue(userRepository.findAll().contains(admin));
+        Assertions.assertThat(userRepository.findAll().contains(collab));
+        Assertions.assertThat(userRepository.findAll().contains(driver));
+        Assertions.assertThat(userRepository.findAll().contains(admin));
     }
 }

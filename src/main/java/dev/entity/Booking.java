@@ -2,6 +2,7 @@ package dev.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,9 @@ public abstract class Booking {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User creator;
+	@ManyToOne
+	@JoinColumn(name="car_id")
+	private Car car;
 	
 	public Booking(){
 		
@@ -63,5 +67,13 @@ public abstract class Booking {
 
 	public void setCreator(User creator) {
 		this.creator = creator;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 }
