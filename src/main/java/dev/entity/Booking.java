@@ -13,25 +13,28 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Booking {
+public abstract class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime bookedAt;
-    private LocalDateTime returnsAt;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     @ManyToOne
     @JoinColumn(name="user_id")
-    private User user;
+    private User creator;
+    @ManyToOne
+    @JoinColumn(name="car_id")
+    private Car car;
 
     public Booking(){
 
     }
 
-    public Booking(User user, LocalDateTime bookedAt, LocalDateTime returnsAt){
-        this.bookedAt = bookedAt;
-        this.returnsAt = returnsAt;
-        this.user = user;
+    public Booking(User creator, LocalDateTime startDate, LocalDateTime endDate){
+        this.setStartDate(startDate);
+        this.setEndDate(endDate);
+        this.setCreator(creator);
     }
 
     public Integer getId() {
@@ -40,24 +43,36 @@ public class Booking {
     public void setId(Integer id) {
         this.id = id;
     }
-    public LocalDateTime getBookedAt() {
-        return bookedAt;
-    }
-    public void setBookedAt(LocalDateTime bookedAt) {
-        this.bookedAt = bookedAt;
-    }
-    public LocalDateTime getReturnsAt() {
-        return returnsAt;
-    }
-    public void setReturnsAt(LocalDateTime returnsAt) {
-        this.returnsAt = returnsAt;
+
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public User getUser() {
-        return user;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }
