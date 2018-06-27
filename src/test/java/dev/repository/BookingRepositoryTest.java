@@ -44,4 +44,19 @@ public class BookingRepositoryTest {
 
 		Assertions.assertThat(bookingRepo.findAll().contains(booking));
 	}
+	
+	@Test
+	public void testBookingWithDriver() {
+
+		User user = new User("test@mail.com", "123456789", ROLES.COLLAB);
+		Booking booking = new Booking(user, LocalDateTime.now(),
+				LocalDateTime.now().plusDays(1));
+
+		dataInitServiceDev.init();
+
+		userRepo.save(user);
+		bookingRepo.save(booking);
+
+		Assertions.assertThat(bookingRepo.findAll().contains(booking));
+	}
 }
