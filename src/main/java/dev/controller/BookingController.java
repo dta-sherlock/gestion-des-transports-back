@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ public class BookingController {
 
 	@Autowired
 	CompanyCarBookingRepository companyCarBookingRepo;
-	
+
 	@Autowired
 	UserRepository userRepo;
 
@@ -42,7 +42,7 @@ public class BookingController {
 
 	@RequestMapping(value = "/creer", method = RequestMethod.POST)
 	@Secured({})
-	public void saveCompanyCarBooking(@ModelAttribute("companyCarBooking") CompanyCarBooking companyCarBooking) {
+	public void saveCompanyCarBooking(@RequestBody CompanyCarBooking companyCarBooking) {
 		companyCarBookingRepo.save(companyCarBooking);
 	}
 }
