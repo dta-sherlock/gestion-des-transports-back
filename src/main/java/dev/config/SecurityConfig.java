@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /// TODO: 27/06/2018 mettre en place la protection CNRF par la suite 
         http.authorizeRequests().antMatchers("/**").permitAll().and().csrf().disable();
     }
     /*
