@@ -2,12 +2,13 @@ package dev.controller;
 
 import java.util.List;
 
-import dev.repository.CarRepository;
+import dev.entity.CompanyCar;
+import dev.repository.CompanyCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import dev.entity.Vehicules;
+import dev.entity.Car;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -15,16 +16,16 @@ import dev.entity.Vehicules;
 public class CarsControler {
 
 	@Autowired
-	CarRepository carsControler;
+	CompanyCarRepository carsControler;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Vehicules> getListCars(Model model) {
+	public List<CompanyCar> getListCars(Model model) {
 		return carsControler.findAll();
 	}
 
 
 	@RequestMapping(method = RequestMethod.POST,path = "creer/")
-	public String submitFormCar(@RequestBody Vehicules car) {
+	public String submitFormCar(@RequestBody CompanyCar car) {
 		carsControler.save(car);
 		return "redirect:/admin/vehicules";
 	}

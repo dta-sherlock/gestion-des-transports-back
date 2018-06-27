@@ -1,6 +1,7 @@
 package dev.repository;
 
-import dev.entity.Vehicules;
+import dev.entity.Car;
+import dev.entity.CompanyCar;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,23 +16,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CarRepositoryTest {
 
     @Autowired
-    CarRepository carsRepository ;
+    CompanyCarRepository carsRepository ;
 
 
     @Test
     public void testUser(){
-
-        Vehicules car1 = new Vehicules( "LM-888-UI", "photo1",2,"Peugot","C1",Vehicules.CarCategory.BerlinesTailleM);
-        Vehicules car2 = new Vehicules( "LM-888-OP", "photo2",3,"Peugot","C2",Vehicules.CarCategory.BerlinesTailleS);
-        Vehicules car3 = new Vehicules( "LM-888-AZ", "photo3",4,"Peugot","C3",Vehicules.CarCategory.BerlinesTailleL);
+        CompanyCar car1 = new CompanyCar("LM-888-ER",1,"Citroen","C3","photo1",CompanyCar.CarCategory.BerlinesTailleM);
+        CompanyCar car3 = new CompanyCar("OM-888-ER",3,"Focus","T1","photo3",CompanyCar.CarCategory.CitadinesPolyvalentes);
 
         carsRepository.save(car1);
-
-        carsRepository.save(car2);
         carsRepository.save(car3);
 
         Assertions.assertThat(carsRepository.findAll().contains(car1));
-        Assertions.assertThat(carsRepository.findAll().contains(car2));
         Assertions.assertThat(carsRepository.findAll().contains(car3));
     }
 }
