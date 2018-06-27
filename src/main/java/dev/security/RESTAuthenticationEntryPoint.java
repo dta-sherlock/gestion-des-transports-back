@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// called when trying to access with unsufficient access level
 @Component
 public class RESTAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
             throws IOException, ServletException {
-
+        // return http code 401
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
     }
 }

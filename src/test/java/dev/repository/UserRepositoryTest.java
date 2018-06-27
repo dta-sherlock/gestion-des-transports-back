@@ -1,6 +1,7 @@
 package dev.repository;
 
 import dev.entity.User;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import org.assertj.core.api.Assertions;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,7 +25,7 @@ public class UserRepositoryTest {
 
 
     @Test
-    public void testUser(){
+    public void testUser() {
         User collab = new User("collab@test",
                 "collab",
                 User.ROLES.COLLAB);

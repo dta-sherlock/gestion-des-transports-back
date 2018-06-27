@@ -1,6 +1,7 @@
 package dev.repository;
 
 import dev.services.DataInitServiceDev;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class DataInitServiceTest {
         int nbStart = userRepository.findAll().size();
 
         dataInitServiceDev.init();
-        assertTrue(userRepository.findAll().size()!=nbStart);
-        assertTrue(userRepository.findAll().size()==(nbStart+3));
+        Assertions.assertThat(userRepository.findAll().size()!=nbStart);
+        Assertions.assertThat(userRepository.findAll().size()==(nbStart+3));
 
     }
 }
