@@ -7,24 +7,43 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class CompanyCarBooking extends Booking {
+	
+	private boolean withDriver;
+	private User driver;
 
 	@OneToOne
-	private Car car;
+	private CompanyCar companyCar;
 
 	public CompanyCarBooking() {
 		super();
 	}
 
-	public CompanyCarBooking(User user, LocalDateTime bookedAt, LocalDateTime returnsAt, Car car) {
-		super(user, bookedAt, returnsAt);
-		this.setCar(car);
+	public CompanyCarBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, CompanyCar companyCar) {
+		super(creator, startDate, endDate);
+		this.companyCar = companyCar;
 	}
 
-	public Car getCar() {
-		return car;
+	public CompanyCar getCompanyCar() {
+		return companyCar;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public void setCompanyCar(CompanyCar companyCar) {
+		this.companyCar = companyCar;
+	}
+
+	public boolean isWithDriver() {
+		return withDriver;
+	}
+
+	public void setWithDriver(boolean withDriver) {
+		this.withDriver = withDriver;
+	}
+
+	public User getDriver() {
+		return driver;
+	}
+
+	public void setDriver(User driver) {
+		this.driver = driver;
 	}
 }
