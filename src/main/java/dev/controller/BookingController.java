@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.entity.Booking;
+import dev.entity.CompanyCarBooking;
 import dev.repository.BookingRepository;
+import dev.repository.CompanyCarBookingRepository;
 
 @RestController
 @RequestMapping("/bookings")
@@ -20,6 +22,9 @@ public class BookingController {
 
 	@Autowired
 	BookingRepository bookingRepo;
+
+	@Autowired
+	CompanyCarBookingRepository companyCarBookingRepo;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Secured({})
@@ -31,5 +36,17 @@ public class BookingController {
 	@Secured({})
 	public void saveBooking(@ModelAttribute("booking") Booking booking) {
 		bookingRepo.save(booking);
+	}
+
+	@RequestMapping(value = "/companyCarBookings", method = RequestMethod.GET)
+	@Secured({})
+	public List<CompanyCarBooking> getCompanyCarBookings() {
+		return companyCarBookingRepo.findAll();
+	}
+
+	@RequestMapping(value = "/companyCarBookings", method = RequestMethod.POST)
+	@Secured({})
+	public void saveCompanyCarBooking(@ModelAttribute("companyCarBooking") CompanyCarBooking companyCarBooking) {
+		companyCarBookingRepo.save(companyCarBooking);
 	}
 }

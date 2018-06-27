@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Car {
@@ -17,6 +18,9 @@ public class Car {
 	String brand;
 	String model;
 	CarCategory category;
+
+	@OneToOne
+	private CompanyCarBooking companyCarBooking;
 
 	public Car() {
 
