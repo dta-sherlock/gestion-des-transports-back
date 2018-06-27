@@ -14,20 +14,20 @@ import dev.entity.CompanyCarBooking;
 import dev.repository.CompanyCarBookingRepository;
 
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/collaborateur/reservations")
 @CrossOrigin
 public class BookingController {
 
 	@Autowired
 	CompanyCarBookingRepository companyCarBookingRepo;
 
-	@RequestMapping(value = "/companyCarBookings", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Secured({})
 	public List<CompanyCarBooking> getCompanyCarBookings() {
 		return companyCarBookingRepo.findAll();
 	}
 
-	@RequestMapping(value = "/companyCarBookings", method = RequestMethod.POST)
+	@RequestMapping(value = "/creer", method = RequestMethod.POST)
 	@Secured({})
 	public void saveCompanyCarBooking(@ModelAttribute("companyCarBooking") CompanyCarBooking companyCarBooking) {
 		companyCarBookingRepo.save(companyCarBooking);
