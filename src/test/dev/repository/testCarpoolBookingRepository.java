@@ -24,10 +24,18 @@ public class testCarpoolBookingRepository {
 	@Autowired
 	CarpoolBookingRepository cpbRepo;
 
+	@Autowired
+	CarRepository carRepo;
+
+	@Autowired
+	UserRepository userRepo;
+
 	@Test
 	public void testCbRepo (){
 		Car car1 = new Car("XX-123-GO", 4, "Peugeot", "5008");
+		this.carRepo.save(car1);
 		User creator = new User();
+		this.userRepo.save(creator);
 		CarpoolBooking cb = new CarpoolBooking(creator, LocalDateTime.now(), LocalDateTime.now(),"7 Rue des Champs", "8 Rue des Hirondelles", 8, car1);
 		this.cpbRepo.save(cb);
 		Assertions.assertThat(cpbRepo.findAll().contains(cb));

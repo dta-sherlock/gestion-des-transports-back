@@ -1,8 +1,8 @@
 package dev.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,10 +11,15 @@ public class CarpoolBooking extends Booking{
     private String startingAddress;
     private String arrivalAddress;
     private int availableSeats;
+    @ManyToOne
     private Car car;
+    @OneToMany
     private List<User> passengers;
 
 
+    public CarpoolBooking(){
+
+    }
     public CarpoolBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, String startingAddress, String arrivalAddress, int availableSeats, Car car) {
         super(creator, startDate, endDate);
         this.startingAddress = startingAddress;
