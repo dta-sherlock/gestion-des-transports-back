@@ -33,17 +33,17 @@ public class DataInitServiceDev implements DataInitService{
     public void init(){
         User collab = new User("collab@test",
                 passwordEncoder.encode("collab"),
-                User.ROLES.COLLAB);
+                User.ROLES.COLLAB,"UserCollab","DTA");
         userRepository.save(collab);
 
         User driver = new User("driver@test",
                 passwordEncoder.encode("driver"),
-                User.ROLES.DRIVER);
+                User.ROLES.DRIVER,"userDriver","DTA");
         userRepository.save(driver);
 
         User admin = new User("admin@test",
                 passwordEncoder.encode("admin"),
-                User.ROLES.ADMIN);
+                User.ROLES.ADMIN,"userAdmin","DTA");
         userRepository.save(admin);
 
         Car car = new Car("XX-123-XX", 4, "Peugeot", "206");

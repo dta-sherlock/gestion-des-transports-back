@@ -33,6 +33,14 @@ public class User {
         this.IS_ACTIVE = true;
     }
 
+    public User(String email, String password, ROLES roles, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public User(String email, String password, ROLES roles, List<Booking> booking, String firstName, String lastName) {
         this.email = email;
         this.password = password;
