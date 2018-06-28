@@ -9,46 +9,51 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class CompanyCarBooking extends Booking {
-	
-	private boolean withDriver;
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User driver;
 
-	@OneToOne
-	private CompanyCar companyCar;
+    private boolean withDriver;
 
-	public CompanyCarBooking() {
-		super();
-	}
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User driver;
 
-	public CompanyCarBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, CompanyCar companyCar) {
-		super(creator, startDate, endDate);
-		this.companyCar = companyCar;
-	}
+    @OneToOne
+    private CompanyCar companyCar;
 
-	public CompanyCar getCompanyCar() {
-		return companyCar;
-	}
+    public CompanyCarBooking() {
+        super();
+    }
 
-	public void setCompanyCar(CompanyCar companyCar) {
-		this.companyCar = companyCar;
-	}
+    public CompanyCarBooking(User creator, String startDate, String endDate, CompanyCar companyCar) {
+        super(creator, startDate, endDate);
+        this.companyCar = companyCar;
+    }
+    
+    public CompanyCarBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, CompanyCar companyCar) {
+        super(creator, startDate, endDate);
+        this.companyCar = companyCar;
+    }
 
-	public boolean isWithDriver() {
-		return withDriver;
-	}
+    public CompanyCar getCompanyCar() {
+        return companyCar;
+    }
 
-	public void setWithDriver(boolean withDriver) {
-		this.withDriver = withDriver;
-	}
+    public void setCompanyCar(CompanyCar companyCar) {
+        this.companyCar = companyCar;
+    }
 
-	public User getDriver() {
-		return driver;
-	}
+    public boolean isWithDriver() {
+        return withDriver;
+    }
 
-	public void setDriver(User driver) {
-		this.driver = driver;
-	}
+    public void setWithDriver(boolean withDriver) {
+        this.withDriver = withDriver;
+    }
+
+    public User getDriver() {
+        return driver;
+    }
+
+    public void setDriver(User driver) {
+        this.driver = driver;
+    }
 }

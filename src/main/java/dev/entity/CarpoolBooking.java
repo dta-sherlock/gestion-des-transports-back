@@ -1,54 +1,66 @@
 package dev.entity;
 
 import javax.persistence.Entity;
+import java.time.LocalDateTime;
 
 @Entity
 public class CarpoolBooking extends Booking {
-	private String startingAddress;
-	private String arrivalAddress;
-	private int availableSeats;
-	private Car car;
+    private String startingAddress;
+    private String arrivalAddress;
+    private int availableSeats;
+    private Car car;
 
-	public CarpoolBooking() {
+    public CarpoolBooking() {
 
-	}
+    }
 
-	public CarpoolBooking(String startingAddress, String arrivalAddress, int availableSeats, Car car) {
-		this.startingAddress = startingAddress;
-		this.arrivalAddress = arrivalAddress;
-		this.availableSeats = availableSeats;
-		this.car = car;
-	}
+    public CarpoolBooking(User creator, String startDate, String endDate, String startingAddress,
+                          String arrivalAddress, int availableSeats, Car car) {
+        super(creator, startDate, endDate);
+        this.startingAddress = startingAddress;
+        this.arrivalAddress = arrivalAddress;
+        this.availableSeats = availableSeats;
+        this.car = car;
+    }
 
-	public String getStartingAddress() {
-		return startingAddress;
-	}
+    public CarpoolBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, String startingAddress,
+                          String arrivalAddress, int availableSeats, Car car) {
+        super(creator, startDate, endDate);
+        this.startingAddress = startingAddress;
+        this.arrivalAddress = arrivalAddress;
+        this.availableSeats = availableSeats;
+        this.car = car;
+    }
 
-	public void setStartingAddress(String startingAddress) {
-		this.startingAddress = startingAddress;
-	}
+    public String getStartingAddress() {
+        return startingAddress;
+    }
 
-	public String getArrivalAddress() {
-		return arrivalAddress;
-	}
+    public void setStartingAddress(String startingAddress) {
+        this.startingAddress = startingAddress;
+    }
 
-	public void setArrivalAddress(String arrivalAddress) {
-		this.arrivalAddress = arrivalAddress;
-	}
+    public String getArrivalAddress() {
+        return arrivalAddress;
+    }
 
-	public int getAvailableSeats() {
-		return availableSeats;
-	}
+    public void setArrivalAddress(String arrivalAddress) {
+        this.arrivalAddress = arrivalAddress;
+    }
 
-	public void setAvailableSeats(int availableSeats) {
-		this.availableSeats = availableSeats;
-	}
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
 
-	public Car getCar() {
-		return car;
-	}
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
 
-	public void setCar(Car car) {
-		this.car = car;
-	}
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 }

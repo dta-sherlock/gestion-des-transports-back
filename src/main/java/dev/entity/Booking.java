@@ -1,6 +1,7 @@
 package dev.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,65 +15,72 @@ import javax.persistence.ManyToOne;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Booking {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User creator;
-	@ManyToOne
-	@JoinColumn(name="car_id")
-	private Car car;
-	
-	public Booking(){
-		
-	}
-	
-	public Booking(User creator, LocalDateTime startDate, LocalDateTime endDate){
-		this.setStartDate(startDate);
-		this.setEndDate(endDate);
-		this.setCreator(creator);
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String startDate;
+    private String endDate;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User creator;
+    @ManyToOne
+    @JoinColumn(name="car_id")
+    private Car car;
 
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
+    public Booking(){
 
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
-	}
+    }
 
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
+    public Booking(User creator, String startDate, String endDate){
+        this.setStartDate(startDate);
+        this.setEndDate(endDate);
+        this.setCreator(creator);
+    }
 
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
-	}
+    public Booking(User creator, LocalDateTime startDate, LocalDateTime endDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        this.setStartDate(startDate.format(formatter));
+        this.setEndDate(endDate.format(formatter));
+        this.setCreator(creator);
+    }
 
-	public User getCreator() {
-		return creator;
-	}
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setCreator(User creator) {
-		this.creator = creator;
-	}
+    public String getStartDate() {
+        return startDate;
+    }
 
-	public Car getCar() {
-		return car;
-	}
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
-	public void setCar(Car car) {
-		this.car = car;
-	}
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 }

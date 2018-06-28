@@ -62,13 +62,6 @@ public class User {
 
     public void setRoles(ROLES roles) { this.roles = roles; }
 
-	public List<Booking> getBooking() {
-		return booking;
-	}
-
-	public void setBooking(List<Booking> booking) {
-		this.booking = booking;
-	}
     public boolean isIS_ACTIVE() { return IS_ACTIVE; }
 
     public void setIS_ACTIVE(boolean IS_ACTIVE) { this.IS_ACTIVE = IS_ACTIVE; }
@@ -80,4 +73,12 @@ public class User {
     public String getLastName() { return lastName; }
 
     public void setLastName(String lastName) { this.lastName = lastName; }
+    
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
+    }
 }
