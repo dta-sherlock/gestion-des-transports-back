@@ -1,5 +1,7 @@
 package dev.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,12 +13,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private Integer id;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private ROLES roles;
     private boolean IS_ACTIVE;
+    @OneToMany
+    private List<Booking> booking;
     private String firstName;
     private String lastName;
 
@@ -68,4 +73,12 @@ public class User {
     public String getLastName() { return lastName; }
 
     public void setLastName(String lastName) { this.lastName = lastName; }
+    
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
+    }
 }

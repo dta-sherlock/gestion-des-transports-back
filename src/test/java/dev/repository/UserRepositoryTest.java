@@ -41,6 +41,10 @@ public class UserRepositoryTest {
                 User.ROLES.ADMIN);
         userRepository.save(admin);
 
+        userRepository.save(collab);
+        userRepository.save(driver);
+        userRepository.save(admin);
+
         Assertions.assertThat(userRepository.findAll().contains(collab));
         Assertions.assertThat(userRepository.findAll().contains(driver));
         Assertions.assertThat(userRepository.findAll().contains(admin));
