@@ -36,12 +36,26 @@ public class DataInitServiceDev implements DataInitService{
                 User.ROLES.COLLAB);
         userRepository.save(collab);
 
+        User driver = new User("driver@test",
+                passwordEncoder.encode("driver"),
+                User.ROLES.DRIVER);
+        userRepository.save(driver);
+
+        User admin = new User("admin@test",
+                passwordEncoder.encode("admin"),
+                User.ROLES.ADMIN);
+        userRepository.save(admin);
+
         Car car = new Car("XX-123-XX", 4, "Peugeot", "206");
         carRepository.save(car);
 
-        CarpoolBooking carpool1 = new CarpoolBooking(collab, LocalDateTime.now().toString(), LocalDateTime.now().plusHours(2).toString(),
+        CarpoolBooking carpool1 = new CarpoolBooking(collab, LocalDateTime.now(), LocalDateTime.now().plusHours(2),
                 "5 impasse Jacques Brel", "7 Avenue Jacques Cartier", 3, car);
         carpoolBookingRepository.save(carpool1);
+
+        CarpoolBooking carpool12 = new CarpoolBooking(driver, LocalDateTime.now(), LocalDateTime.now().plusHours(2),
+                "7 Avenue Jacques Cartier", "5 impasse Jacques Brel", 1, car);
+        carpoolBookingRepository.save(carpool12);
 
     }
 }

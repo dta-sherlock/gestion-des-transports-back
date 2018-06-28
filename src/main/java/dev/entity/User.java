@@ -21,6 +21,8 @@ public class User {
     private boolean IS_ACTIVE;
     @OneToMany
     private List<Booking> booking;
+    private String firstName;
+    private String lastName;
 
     public User() {}
 
@@ -29,6 +31,16 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.IS_ACTIVE = true;
+    }
+
+    public User(String email, String password, ROLES roles, List<Booking> booking, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.IS_ACTIVE = true;
+        this.booking = booking;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Integer getId() {
@@ -65,5 +77,29 @@ public class User {
 
     public void setBooking(List<Booking> booking) {
         this.booking = booking;
+    }
+
+    public boolean isIS_ACTIVE() {
+        return IS_ACTIVE;
+    }
+
+    public void setIS_ACTIVE(boolean IS_ACTIVE) {
+        this.IS_ACTIVE = IS_ACTIVE;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
