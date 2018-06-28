@@ -23,7 +23,7 @@ public class CompanyCarBooking extends Booking {
         super();
     }
 
-    public CompanyCarBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, CompanyCar companyCar) {
+    public CompanyCarBooking(User creator, String startDate, String endDate, CompanyCar companyCar) {
         super(creator, startDate, endDate);
         this.companyCar = companyCar;
     }

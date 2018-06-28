@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CarpoolBookingRepository extends JpaRepository<CarpoolBooking, Integer> {
 
-//    List<CarpoolBooking> findByUser(User user);
+    List<CarpoolBooking> findByCreator(User creator);
 }

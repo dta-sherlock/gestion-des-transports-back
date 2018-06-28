@@ -1,6 +1,7 @@
 package dev.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,8 @@ public abstract class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private String startDate;
+    private String endDate;
     @ManyToOne
     @JoinColumn(name="user_id")
     private User creator;
@@ -31,9 +32,16 @@ public abstract class Booking {
 
     }
 
-    public Booking(User creator, LocalDateTime startDate, LocalDateTime endDate){
+    public Booking(User creator, String startDate, String endDate){
         this.setStartDate(startDate);
         this.setEndDate(endDate);
+        this.setCreator(creator);
+    }
+
+    public Booking(User creator, LocalDateTime startDate, LocalDateTime endDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        this.setStartDate(startDate.format(formatter));
+        this.setEndDate(endDate.format(formatter));
         this.setCreator(creator);
     }
 
@@ -44,19 +52,19 @@ public abstract class Booking {
         this.id = id;
     }
 
-    public LocalDateTime getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

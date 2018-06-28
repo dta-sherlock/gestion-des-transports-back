@@ -25,11 +25,11 @@ public class CarpoolBookingController {
         return carpoolBookingRepository.findAll();
     }
 
-//    @RequestMapping(value = "/user/{userEmail}", method = RequestMethod.GET)
-//    // TODO @Secured({})
-//    public List<CarpoolBooking> getBookingsByUserEmail(@PathVariable String userEmail) {
-//        return carpoolBookingRepository.findByUser(userRepository.findByEmail(userEmail));
-//    }
+    @RequestMapping(value = "/user/{userEmail}", method = RequestMethod.GET)
+    // TODO @Secured({})
+    public List<CarpoolBooking> getBookingsByUserEmail(@PathVariable String userEmail) {
+        return carpoolBookingRepository.findByCreator(userRepository.findByEmail(userEmail));
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void addCarpoolBooking(@RequestBody CarpoolBooking carpoolBooking){
