@@ -9,4 +9,5 @@ import java.util.List;
 public interface CarpoolBookingRepository extends JpaRepository<CarpoolBooking, Integer> {
 
     List<CarpoolBooking> findByCreator(User creator);
+    CarpoolBooking findById(int id);
 }

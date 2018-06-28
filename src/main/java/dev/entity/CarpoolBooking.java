@@ -1,7 +1,9 @@
 package dev.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class CarpoolBooking extends Booking {
@@ -9,6 +11,8 @@ public class CarpoolBooking extends Booking {
     private String arrivalAddress;
     private int availableSeats;
     private Car car;
+    @ManyToMany
+    private List<User> passengers;
 
     public CarpoolBooking() {
 
@@ -30,6 +34,13 @@ public class CarpoolBooking extends Booking {
         this.arrivalAddress = arrivalAddress;
         this.availableSeats = availableSeats;
         this.car = car;
+    }
+
+    public void addPassenger(User passenger){
+        if (this.availableSeats>0){
+            this.availableSeats-=1;
+            this.passengers.add(passenger);
+        }
     }
 
     public String getStartingAddress() {
@@ -63,4 +74,8 @@ public class CarpoolBooking extends Booking {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    public List<User> getPassengers() { return passengers; }
+
+    public void setPassengers(List<User> passengers) { this.passengers = passengers; }
 }
