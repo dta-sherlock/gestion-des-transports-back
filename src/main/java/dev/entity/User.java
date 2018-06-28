@@ -19,6 +19,8 @@ public class User {
     private String password;
     private ROLES roles;
     private boolean IS_ACTIVE;
+    private String firstName;
+    private String lastName;
     @OneToMany
     private List<Booking> booking;
 
@@ -29,6 +31,30 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.IS_ACTIVE = true;
+    }
+
+    public boolean isIS_ACTIVE() {
+        return IS_ACTIVE;
+    }
+
+    public void setIS_ACTIVE(boolean IS_ACTIVE) {
+        this.IS_ACTIVE = IS_ACTIVE;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Integer getId() {
