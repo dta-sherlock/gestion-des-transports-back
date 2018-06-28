@@ -14,6 +14,15 @@ public class CarpoolBooking extends Booking {
 
     }
 
+    public CarpoolBooking(User creator, String startDate, String endDate, String startingAddress,
+                          String arrivalAddress, int availableSeats, Car car) {
+        super(creator, startDate, endDate);
+        this.startingAddress = startingAddress;
+        this.arrivalAddress = arrivalAddress;
+        this.availableSeats = availableSeats;
+        this.car = car;
+    }
+
     public CarpoolBooking(User creator, LocalDateTime startDate, LocalDateTime endDate, String startingAddress,
                           String arrivalAddress, int availableSeats, Car car) {
         super(creator, startDate, endDate);

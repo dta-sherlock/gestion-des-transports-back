@@ -39,7 +39,7 @@ public class DataInitServiceDev implements DataInitService{
         Car car = new Car("XX-123-XX", 4, "Peugeot", "206");
         carRepository.save(car);
 
-        CarpoolBooking carpool1 = new CarpoolBooking(collab, LocalDateTime.now(), LocalDateTime.now().plusHours(2),
+        CarpoolBooking carpool1 = new CarpoolBooking(collab, LocalDateTime.now().toString(), LocalDateTime.now().plusHours(2).toString(),
                 "5 impasse Jacques Brel", "7 Avenue Jacques Cartier", 3, car);
         carpoolBookingRepository.save(carpool1);
 
