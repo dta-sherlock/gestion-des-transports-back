@@ -24,18 +24,27 @@ public class DataInitServiceDev implements DataInitService{
     @Override
     public void init(){
         User collab = new User("collab@test",
-                passwordEncoder.encode("collab"),
-                User.ROLES.COLLAB);
+                "collab",
+                User.ROLES.COLLAB,
+                true,
+                "val","lemarie");
         userRepository.save(collab);
 
         User driver = new User("driver@test",
-                passwordEncoder.encode("driver"),
-                User.ROLES.DRIVER);
+                "driver",
+                User.ROLES.DRIVER,true,
+                "quentin",
+                "noltasiak"
+        );
+
         userRepository.save(driver);
 
         User admin = new User("admin@test",
-                passwordEncoder.encode("admin"),
-                User.ROLES.ADMIN);
+                "admin",
+                User.ROLES.ADMIN,
+                true,
+                "benjamin",
+                "lemarie");
         userRepository.save(admin);
     }
 }

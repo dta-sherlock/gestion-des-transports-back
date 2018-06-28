@@ -28,17 +28,25 @@ public class UserRepositoryTest {
     public void testUser() {
         User collab = new User("collab@test",
                 "collab",
-                User.ROLES.COLLAB);
+                User.ROLES.COLLAB ,true,
+                "val","lemarie");
         userRepository.save(collab);
 
         User driver = new User("driver@test",
                 "driver",
-                User.ROLES.DRIVER);
+                User.ROLES.DRIVER,true,
+                "quentin",
+                "noltasiak"
+                );
+
         userRepository.save(driver);
 
         User admin = new User("admin@test",
                 "admin",
-                User.ROLES.ADMIN);
+                User.ROLES.ADMIN,
+                true,
+                "benjamin",
+                "lemarie");
         userRepository.save(admin);
 
         Assertions.assertThat(userRepository.findAll().contains(collab));
