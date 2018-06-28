@@ -32,6 +32,7 @@ public class CarpoolBookingController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    // TODO @Secured({})
     public void addCarpoolBooking(@RequestBody CarpoolBooking carpoolBooking){
         carpoolBookingRepository.save(carpoolBooking);
     }

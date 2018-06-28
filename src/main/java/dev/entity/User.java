@@ -33,29 +33,16 @@ public class User {
         this.IS_ACTIVE = true;
     }
 
-    public boolean isIS_ACTIVE() {
-        return IS_ACTIVE;
-    }
-
-    public void setIS_ACTIVE(boolean IS_ACTIVE) {
-        this.IS_ACTIVE = IS_ACTIVE;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
+    public User(String email, String password, ROLES roles, List<Booking> booking, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.IS_ACTIVE = true;
+        this.booking = booking;
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 
     public Integer getId() {
         return id;
@@ -81,9 +68,37 @@ public class User {
         this.password = password;
     }
 
-    public ROLES getRoles() { return roles; }
+    public ROLES getRoles() {
+        return roles;
+    }
 
-    public void setRoles(ROLES roles) { this.roles = roles; }
+    public void setRoles(ROLES roles) {
+        this.roles = roles;
+    }
+
+    public boolean isIS_ACTIVE() {
+        return IS_ACTIVE;
+    }
+
+    public void setIS_ACTIVE(boolean IS_ACTIVE) {
+        this.IS_ACTIVE = IS_ACTIVE;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public List<Booking> getBooking() {
         return booking;
