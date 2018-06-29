@@ -3,7 +3,7 @@ package dev.entity;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class CompanyCar extends Car {
     String photo;
     @Enumerated(EnumType.STRING) CarCategory category;

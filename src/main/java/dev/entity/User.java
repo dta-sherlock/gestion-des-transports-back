@@ -1,5 +1,6 @@
 package dev.entity;
 
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -11,22 +12,40 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private Integer id;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING) private ROLES roles;
-    private boolean IS_ACTIVE;
+    private ROLES roles;
+    private boolean is_active;
     private String firstName;
     private String lastName;
-
+    @OneToMany
+    private List<Booking> booking;
 
     public User() {}
 
-    public User(String email, String password, ROLES roles, boolean IS_ACTIVE, String firstName, String lastName) {
+    public User(String email, String password, ROLES roles) {
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.IS_ACTIVE = IS_ACTIVE;
+        this.is_active = true;
+    }
+
+    public User(String email, String password, ROLES roles, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public User(String email, String password, ROLES roles, List<Booking> booking, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.is_active = true;
+        this.booking = booking;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -64,11 +83,11 @@ public class User {
     }
 
     public boolean isIS_ACTIVE() {
-        return IS_ACTIVE;
+        return is_active;
     }
 
-    public void setIS_ACTIVE(boolean IS_ACTIVE) {
-        this.IS_ACTIVE = IS_ACTIVE;
+    public void setIS_ACTIVE(boolean is_active) {
+        this.is_active = is_active;
     }
 
     public String getFirstName() {
@@ -85,5 +104,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
     }
 }

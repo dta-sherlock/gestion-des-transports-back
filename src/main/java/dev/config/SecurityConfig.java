@@ -26,6 +26,7 @@ import java.util.Arrays;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Import(DataSourceMySQLConfig.class)
+@CrossOrigin
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -50,9 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("select email, ROLES from user where email = ?");
     }
 
-
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -65,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().cors();
                 /// TODO: 27/06/2018 mettre en place la protection CNRF par la suite
         http.csrf().disable();
-
     }
 
     @Bean
