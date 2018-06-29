@@ -17,40 +17,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Profile("dev-mysql")
 public class UserRepositoryTest {
 
-    @Autowired
-    UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
+	@Test
+	public void testUser() {
+		User collab = new User("collab@test", "collab", User.ROLES.COLLAB, "val", "lemarie");
+		userRepository.save(collab);
 
-    @Test
-    public void testUser() {
-        User collab = new User("collab@test",
-                "collab",
-                User.ROLES.COLLAB ,true,
-                "val","lemarie");
-        userRepository.save(collab);
+		User driver = new User("driver@test", "driver", User.ROLES.DRIVER, "quentin", "noltasiak");
 
-        User driver = new User("driver@test",
-                "driver",
-                User.ROLES.DRIVER,true,
-                "quentin",
-                "noltasiak"
-                );
+		userRepository.save(driver);
 
-        userRepository.save(driver);
+		User admin = new User("admin@test", "admin", User.ROLES.ADMIN, "benjamin", "lemarie");
+		userRepository.save(admin);
 
-        User admin = new User("admin@test",
-                "admin",
-                User.ROLES.ADMIN,
-                true,
-                "benjamin",
-                "lemarie");
-        userRepository.save(admin);
-
-        Assertions.assertThat(userRepository.findAll().contains(collab));
-        Assertions.assertThat(userRepository.findAll().contains(driver));
-        Assertions.assertThat(userRepository.findAll().contains(admin));
-    }
+		Assertions.assertThat(userRepository.findAll().contains(collab));
+		Assertions.assertThat(userRepository.findAll().contains(driver));
+		Assertions.assertThat(userRepository.findAll().contains(admin));
+	}
 }
