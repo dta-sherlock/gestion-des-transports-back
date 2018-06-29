@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
                 .and().cors();
+                /// TODO: 27/06/2018 mettre en place la protection CNRF par la suite
         http.csrf().disable();
     }
 

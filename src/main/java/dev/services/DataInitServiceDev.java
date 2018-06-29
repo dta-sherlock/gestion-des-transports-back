@@ -56,6 +56,5 @@ public class DataInitServiceDev implements DataInitService{
         CarpoolBooking carpool12 = new CarpoolBooking(driver, LocalDateTime.now(), LocalDateTime.now().plusHours(2),
                 "7 Avenue Jacques Cartier", "5 impasse Jacques Brel", 1, car);
         carpoolBookingRepository.save(carpool12);
-
     }
 }

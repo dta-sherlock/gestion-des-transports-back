@@ -1,7 +1,6 @@
 package dev.entity;
 
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -50,7 +49,6 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
 
     public Integer getId() {
         return id;
