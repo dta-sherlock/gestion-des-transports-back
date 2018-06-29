@@ -18,7 +18,7 @@ public class User {
     private String email;
     private String password;
     private ROLES roles;
-    private boolean IS_ACTIVE;
+    private boolean is_active;
     private String firstName;
     private String lastName;
     @OneToMany
@@ -30,7 +30,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.IS_ACTIVE = true;
+        this.is_active = true;
     }
 
     public User(String email, String password, ROLES roles, String firstName, String lastName) {
@@ -45,7 +45,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.IS_ACTIVE = true;
+        this.is_active = true;
         this.booking = booking;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -85,11 +85,11 @@ public class User {
     }
 
     public boolean isIS_ACTIVE() {
-        return IS_ACTIVE;
+        return is_active;
     }
 
-    public void setIS_ACTIVE(boolean IS_ACTIVE) {
-        this.IS_ACTIVE = IS_ACTIVE;
+    public void setIS_ACTIVE(boolean is_active) {
+        this.is_active = is_active;
     }
 
     public String getFirstName() {
