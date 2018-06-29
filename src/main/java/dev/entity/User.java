@@ -38,6 +38,7 @@ public class User {
         this.roles = roles;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.is_active = true;
     }
 
     public User(String email, String password, ROLES roles, List<Booking> booking, String firstName, String lastName) {
